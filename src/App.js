@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
 
 function App() {
+  const [name, setName] = useState("Volkan");
+  const [age, setAge] = useState(25);
+  const [array, setArray] = useState(["Volkan", "Ahmet", "Mehmet"]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <h1>
+        Selamlar {name} Yaşın {age}
+      </h1>
+      <button onClick={() => setName("Ahmet")}>Change Name</button>
+
+      <button onClick={() => setAge(30)}>Change Age</button>
+      {
+        array.map((value, index) => {
+          return (
+            <>
+              <h1 key={index}>{value}</h1>
+
+            </>
+
+          )
+        })
+      }
+      <button onClick={() => setArray([...array, "new Element"])}>Add New Element</button>
     </div>
+
   );
 }
 
